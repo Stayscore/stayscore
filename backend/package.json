@@ -4,11 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start:dev": "tsx watch src/main.ts",
-    "migrate": "node ./scripts/migrate.js",
-    "seed:demo": "node ./scripts/seed_demo.js",
-    "start:render": "node ./scripts/migrate.js && node ./scripts/seed_demo.js && npx tsx src/main.ts"
-  },
+  "start": "npx tsx src/main.ts",
+  "dev": "nodemon src/main.ts",
+  "migrate": "node ./scripts/migrate.js",
+  "seed": "node ./scripts/seed_demo.js",
+  "start:render": "node ./scripts/migrate.js && node ./scripts/seed_demo.js && npx tsx src/main.ts"
+}
   "dependencies": {
     "@fastify/cors": "^10.0.0",
     "@fastify/jwt": "^8.0.1",
