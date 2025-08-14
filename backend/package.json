@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-  "start": "npx tsx src/main.ts",
-  "dev": "nodemon src/main.ts",
-  "migrate": "node ./scripts/migrate.js",
-  "seed": "node ./scripts/seed_demo.js",
-  "start:render": "node ./scripts/migrate.js && node ./scripts/seed_demo.js && npx tsx src/main.ts"
-}
+    "start": "npx tsx src/main.ts",
+    "dev": "nodemon src/main.ts",
+    "migrate": "node ./scripts/migrate.js",
+    "seed": "node ./scripts/seed_demo.js",
+    "start:render": "node ./scripts/migrate.js && node ./scripts/seed_demo.js && npx tsx src/main.ts"
+  },
   "dependencies": {
     "@fastify/cors": "^10.0.0",
     "@fastify/jwt": "^8.0.1",
@@ -18,6 +18,6 @@
   },
   "devDependencies": {
     "tsx": "^4.19.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.4.5"
   }
 }
