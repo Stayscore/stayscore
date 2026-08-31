@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { readFileSync, readdirSync } from 'fs';
 import path from 'path';
 import pg from 'pg';

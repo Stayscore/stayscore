@@ -1,4 +1,5 @@
 // backend/src/main.ts
+import 'dotenv/config';
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import fastifyJwt from '@fastify/jwt';
