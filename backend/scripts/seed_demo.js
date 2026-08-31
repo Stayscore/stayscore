@@ -82,13 +82,18 @@ async function run(){
     console.log('Skipping demo seed (SEED_DEMO != 1)');
     return;
   }
-  const pool = new Pool({
-    host: process.env.POSTGRES_HOST || 'localhost',
-    port: Number(process.env.POSTGRES_PORT || 5432),
-    database: process.env.POSTGRES_DB || 'stayscore',
-    user: process.env.POSTGRES_USER || 'stayscore',
-    password: process.env.POSTGRES_PASSWORD || 'stayscore',
-  });
+  const pool = process.env.DATABASE_URL
+    ? new Pool({
+        connectionString: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false },
+      })
+    : new Pool({
+        host: process.env.POSTGRES_HOST || 'localhost',
+        port: Number(process.env.POSTGRES_PORT || 5432),
+        database: process.env.POSTGRES_DB || 'stayscore',
+        user: process.env.POSTGRES_USER || 'stayscore',
+        password: process.env.POSTGRES_PASSWORD || 'stayscore',
+      });
   await pool.query(demoSQL);
   await pool.end();
   console.log('Demo data seeded');
