@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "tsc",
     "start": "npx tsx src/main.ts",
     "dev": "nodemon src/main.ts",
     "migrate": "node ./scripts/migrate.js",
@@ -13,11 +14,14 @@
   "dependencies": {
     "@fastify/cors": "^8.3.0",
     "@fastify/jwt": "^8.0.1",
+    "bcryptjs": "^2.4.3",
     "fastify": "^4.28.1",
-    "pg": "^8.11.5",
-    "bcryptjs": "^2.4.3"
+    "pg": "^8.11.5"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^26.4.0",
+    "@types/pg": "^8.23.1",
     "tsx": "^4.19.0",
     "typescript": "^5.4.5"
   }
