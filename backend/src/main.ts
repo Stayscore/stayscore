@@ -4,6 +4,7 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import fastifyJwt from '@fastify/jwt';
 import authRoutes from './routes/auth.js';
+import ratingsRoutes from './routes/ratings.js';
 
 async function start() {
   const app = Fastify({ logger: true });
@@ -21,6 +22,9 @@ async function start() {
 
   // >>> Auth-Routen unter /auth
   await app.register(authRoutes, { prefix: '/auth' });
+
+  // >>> Bewertungen unter /ratings
+  await app.register(ratingsRoutes, { prefix: '/ratings' });
 
   const port = Number(process.env.APP_PORT ?? 8080);
   await app.listen({ port, host: '0.0.0.0' });

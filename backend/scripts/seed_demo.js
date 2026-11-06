@@ -1,6 +1,9 @@
 import 'dotenv/config';
 import pg from 'pg';
+import bcrypt from 'bcryptjs';
 const { Pool } = pg;
+
+const demoPasswordHash = bcrypt.hashSync('Passwort123', 10);
 
 const demoSQL = `
 INSERT INTO app_user (role, username, consent_privacy) VALUES
@@ -11,9 +14,9 @@ INSERT INTO app_user (role, username, consent_privacy) VALUES
 ('guest', 'AnnaHoliday', true) ON CONFLICT DO NOTHING;
 
 INSERT INTO app_user (role, email, password_hash, consent_privacy) VALUES
-('venue', 'hotel.alpenblick@example.com', 'Passwort123', true) ON CONFLICT (email) DO NOTHING;
+('venue', 'hotel.alpenblick@example.com', '${demoPasswordHash}', true) ON CONFLICT (email) DO NOTHING;
 INSERT INTO app_user (role, email, password_hash, consent_privacy) VALUES
-('venue', 'cafe.morgenrot@example.com', 'Passwort123', true) ON CONFLICT (email) DO NOTHING;
+('venue', 'cafe.morgenrot@example.com', '${demoPasswordHash}', true) ON CONFLICT (email) DO NOTHING;
 
 DO $$
 BEGIN

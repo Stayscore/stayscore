@@ -13,7 +13,7 @@ export default async function authRoutes(app: FastifyInstance) {
     }
 
     const { rows } = await pool.query(
-      'SELECT id, username, email, password, role FROM users WHERE email = $1 LIMIT 1',
+      'SELECT id, username, email, password_hash, role FROM app_user WHERE email = $1 LIMIT 1',
       [email]
     );
     if (rows.length === 0) {
@@ -21,7 +21,7 @@ export default async function authRoutes(app: FastifyInstance) {
     }
 
     const user = rows[0];
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, user.password_hash);
     if (!match) {
       return reply.code(401).send({ ok: false, error: 'invalid_credentials' });
     }
